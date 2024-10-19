@@ -1,0 +1,25 @@
+{% extends 'frontpage.html' %}
+{% block main %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% if docente %}
+	<h2>DATOS DEL DOCENTE</h2>
+	<br/>
+	<hr>
+	<p>ID: {{docente.id}}</p>
+	<p>Nombre: {{docente.nombre}}</p>
+	<p>Apellido Paterno: {{docente.apellido_paterno}}</p>
+	<p>Apellido Materno: {{docente.apellido_materno}}</p>
+	<p>Telefono: {{docente.telefono}}</p>
+	<p>Correo: {{docente.correo}}</p>
+	<hr>
+{% endif %}
+<a href="{% url 'ingles:index_docente' %}" type="button" class="btn btn-dark">Volver</a>
+{% endblock %}

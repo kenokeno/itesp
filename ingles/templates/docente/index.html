@@ -1,0 +1,25 @@
+{% extends 'frontpage.html' %}
+{% block main %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+{% load render_table from django_tables2 %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% if filter %}
+	<form action="" method="get" class="form form-horizontal">
+        {% bootstrap_form filter.form layout='inline' %}
+        {% bootstrap_button 'Buscar' %}
+    </form>
+{% endif %}
+{% render_table table 'django_tables2/bootstrap.html' %}
+<a type="button" href="{% url 'ingles:new_docente' %}" class="btn btn-dark">Nuevo</a>
+<a type="button" href="{% url 'ingles:report_docente' %}" class="btn btn-dark">Imprimir</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'frontpage.html' %}
+{% block main %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<h2>Agregar Docente</h2>
+<form method="post" class="form form-horizontal">
+	{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Aceptar" class="btn btn-dark">
+    <a href="{% url 'ingles:index_docente' %}" type="submit" class="btn btn-dark">Volver</a>
+</form>
+{% endblock %}

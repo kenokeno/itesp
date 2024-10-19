@@ -1,0 +1,18 @@
+{% extends 'frontpage.html' %}
+{% block main %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit" class="btn btn-dark">Aceptar</button>
+	<a type="button" href="{% url 'ingles:index_docente' %}" class="btn btn-dark">Volver</a>
+</form>
+{% endblock %}

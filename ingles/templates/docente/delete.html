@@ -1,0 +1,18 @@
+{% extends 'frontpage.html' %}
+{% block main %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<form method="post">
+	{% csrf_token %}
+	<p>¿Estas seguro que quiere eliminar el registro: "{{ object }}"?</p>
+	<input type="submit" value="Confirmar" class="btn btn-primary">
+	<a href="{% url 'ingles:index_docente' %}" type="submit" class="btn btn-primary">Volver</a>
+</form>
+{% endblock %}
